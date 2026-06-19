@@ -8,10 +8,6 @@ const app = new App({
   appToken: process.env.SLACK_APP_TOKEN,
   socketMode: true
 });
-(async () => {
-  await app.start();
-  console.log("bot is running!");
-})();
 app.command("/bot-mark-ping", async ({ command, ack, respond }) => {
   const start = Date.now();
   await ack();
@@ -52,3 +48,7 @@ app.command("/bot-mark-random-number", async ({ command, ack, respond }) => {
     return await respond({ text: 'your number is: ' + (a[0]+Math.floor(Math.random()*(a[1]-a[0]+1))) });
   }
 });
+(async () => {
+  await app.start();
+  console.log("bot is running!");
+})();
