@@ -42,7 +42,6 @@ app.command("/bot-mark-random-number", async ({ command, ack, respond }) => {
   await ack();
   respond({ text: 'Generating a random number between the two numbers you provided...' });
   const a = command.text.split(/[\s,]+/).map(Number);
-  respond({ text: 'test '+ a });
   if (a.length != 2) {
     return await respond({ text: "Please provide two valid numbers." });
   }
