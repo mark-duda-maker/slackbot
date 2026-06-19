@@ -28,7 +28,7 @@ app.command("/bot-mark-help", async ({ ack, respond }) => {
 /bot-mark-random-number - Generate a random number between two input numbers`
   });
 });
-app.command("/stardance-bot-mark-catfact", async ({ ack, respond }) => {
+app.command("/bot-mark-catfact", async ({ ack, respond }) => {
   await ack();
 
   try {
