@@ -12,19 +12,20 @@ const app = new App({
   await app.start();
   console.log("bot is running!");
 })();
-app.command("/stardance-bot-mark-ping", async ({ command, ack, respond }) => {
+app.command("/bot-mark-ping", async ({ command, ack, respond }) => {
   const start = Date.now();
   await ack();
   const latency = Date.now() - start;
   await respond({ text: `Pong!\nLatency: ${latency}ms` });
 });
-app.command("/stardance-bot-mark-help", async ({ ack, respond }) => {
+app.command("/bot-mark-help", async ({ ack, respond }) => {
   await ack();
   await respond({
     text:
 `Available Commands:
-/stardance-bot-mark-ping - Check bot latency
-/stardance-bot-mark-catfact - Get a cat fact`
+/bot-mark-ping - Check bot latency
+/bot-mark-catfact - Get a cat fact
+/bor-mark-random-number - Generate a random number between two input numbers`
   });
 });
 app.command("/stardance-bot-mark-catfact", async ({ ack, respond }) => {
@@ -37,4 +38,18 @@ app.command("/stardance-bot-mark-catfact", async ({ ack, respond }) => {
     await respond({ text: "Failed to fetch a cat fact." });
   }
 })
-
+app.command("/bot-mark-random-number", async ({ command, ack, respond }) => {
+  await ack();
+  respond({ text: 'Generating a random number between the two numbers you provided...' });
+  const a = command.text.split(/[\s,]+/).map(Number);
+  respond({ text: 'test '+ a });
+  if (a.length != 2) {
+    return await respond({ text: "Please provide two valid numbers." });
+  }
+  if (a[0] > a[1]) {
+    return await respond({ text: "The minimun number must be less than to the maximum number." });
+  }
+  else {
+    return await respond({ text: 'your number is: ' + (a[0]+Math.floor(Math.random()*(a[1]-a[0]+1))) });
+  }
+});
