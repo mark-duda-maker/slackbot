@@ -25,7 +25,7 @@ app.command("/bot-mark-help", async ({ ack, respond }) => {
 `Available Commands:
 /bot-mark-ping - Check bot latency
 /bot-mark-catfact - Get a cat fact
-/bor-mark-random-number - Generate a random number between two input numbers`
+/bot-mark-random-number - Generate a random number between two input numbers`
   });
 });
 app.command("/stardance-bot-mark-catfact", async ({ ack, respond }) => {
